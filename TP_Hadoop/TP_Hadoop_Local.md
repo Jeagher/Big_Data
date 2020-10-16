@@ -1,6 +1,10 @@
+*Sommaire*
+
+[[TOC]]
+
 # TP Hadoop, en local
 
-Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots d'un fichier texte, en local, _i.e._ sans exploiter le parallélisme massif potentiel du framework _hadoop_. Le programme est constitué de deux scripts _Python_ qui sont appelés successivement selon la méthode décrite ci-dessous. Il s'agit ici surtout de comprendre la logique algorithmique.
+Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots d'un fichier texte, en local, _i.e._ sans exploiter le parallélisme massif potentiel du framework **hadoop**. Le programme est constitué de deux scripts _Python_ qui sont appelés successivement selon la méthode décrite ci-dessous. Il s'agit ici surtout de comprendre la logique algorithmique.
 
   - Ouvrez un _Terminal_ et déplacez-vous dans votre dossier de travail (avec la commande ```cd```). Tapez la commande permettant de récupérer les fichiers nécessaires à ce TP.   
   ```shell
@@ -8,7 +12,7 @@ Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots 
   ```
   Constatez, dans un gestionnaire de fichiers, que cette commande a permis de rapatrier des fichiers répartis dans 2 dossiers : _TP\_Hadoop_ et _TP\_SparQL_. Nous allons ici travailler sur le dossier _TP\_Hadoop_.
 
-  - Dans le _Terminal_, déplacez-vous dans le dossier _TP\_Hadoop_, en lancant successivement les 3 commandes suivantes :
+  - Dans le _Terminal_, déplacez-vous dans le dossier _TP\_Hadoop_, en lançant successivement les 3 commandes suivantes :
   ```shell
   cd s9_mod21_bigdata_tp
   cd TP_Hadoop

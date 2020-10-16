@@ -2,9 +2,9 @@
 
 [[TOC]]
 
-# TP Hadoop, en local
+# Map-reduce, en local
 
-Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots d'un fichier texte, en local, _i.e._ sans exploiter le parallélisme massif potentiel du framework **hadoop**. Le programme est constitué de deux scripts _Python_ qui sont appelés successivement selon la méthode décrite ci-dessous. Il s'agit ici surtout de comprendre la logique algorithmique.
+Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots d'un fichier texte, en local, _i.e._ sans exploiter le parallélisme massif  du framework **Hadoop**. Le programme est constitué de deux scripts _Python_ qui sont appelés successivement selon la méthode décrite ci-dessous. Il s'agit ici surtout de comprendre la logique algorithmique.
 
   - Ouvrez un _Terminal_ et déplacez-vous dans votre dossier de travail (avec la commande ```cd```). Tapez la commande permettant de récupérer les fichiers nécessaires à ce TP.   
   ```shell
@@ -20,7 +20,7 @@ Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots 
   ```
   ou plus simplement :    
   ```shell
-  cd s9_mod21_bigdata_tp\TP_Hadoop\wordcount
+  cd s9_mod21_bigdata_tp/TP_Hadoop/wordcount
   ```
 
   La commande ```ls``` permet de lister le contenu du dossier. Vous devriez observer la présence des 2 fichiers _Python_ et du livre _Dracula_ (libre de droit, téléchargé à partir de [cette adresse](http://www.textfiles.com/etext/FICTION/dracula)).

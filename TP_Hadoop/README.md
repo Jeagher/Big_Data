@@ -4,7 +4,7 @@
 
 # TP Hadoop
 
-Ce TP fait suite au cours sur le _framework_ libre et open source appelé [__hadoop__](https://hadoop.apache.org), développé et maintenu par la [Fondation Apache](https://www.apache.org).
+Ce TP fait suite au cours sur le _framework_ libre et open source appelé [__Hadoop__](https://Hadoop.apache.org), développé et maintenu par la [Fondation Apache](https://www.apache.org).
 
 *Remarque* :
 > Pour ce TP, vous devez savoir ouvrir un _Terminal_ sur votre machine, quelque soit le système d'exploitation (_Windows_, _Linux_, ou _Mac OS X_). Sous _Windows 10_, vous pourrez utiliser le programme _Windows powershell_ qui est très similaires au _Terminal_ de _Linux_ et de _Mac OS X_. 
@@ -25,15 +25,15 @@ git --version
 S'il est absent, alors installez-le grâce à ce lien : [git-scm](https://git-scm.com/download/win). Lors de l'installation, validez les choix par défaut qui vous sont proposés.
 
 
-## TP : 1ière partie
+## TP 1ière partie - _Map-Reduce_ en local
 
-Suivez alors les consignes concernant la première partie du TP, qui consistent a exécuter l'algorithme _map-reduce_ de comptage de mots, sur le fichier contenant un livre (_Dracula_) au format texte: [TP_Hadoop_local.md](./TP_Hadoop_local.md).
+Suivez alors les consignes concernant la première partie du TP, qui consistent a exécuter l'algorithme _map-reduce_ de comptage de mots, sur le fichier contenant un livre (_Dracula_) au format texte: [Map-Reduce_Local.md](./Map-Reduce_Local.md).
 
-## Installer **hadoop** via *Docker*
+## Installer **Hadoop** via *Docker*
 
-Pour installer **hadoop** sur votre machine, suivez les consignes du fichier [Install_Docker_Hadoop.md](./Install_Docker_Hadoop.md).
+Pour installer **Hadoop** sur votre machine, suivez les consignes du fichier [Install_Docker_Hadoop.md](./Install_Docker_Hadoop.md).
 
-## TP : 2ième partie
+## TP 2ième partie - _Map-Reduce_ avec Hadoop
 
-Ensuite, suivez l'énoncé du TP à proprement parlé disponible dans le fichier [TP_Hadoop.md](./TP_Hadoop.md).
+Ensuite, suivez l'énoncé du TP à proprement parlé disponible dans le fichier [Map-Reduce_Hadoop.md](./Map-Reduce_Hadoop.md).
 

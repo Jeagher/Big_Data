@@ -6,21 +6,17 @@
 
 Les étapes pour installer **Hadoop** via _Docker_ sont largement adaptées de la page de [Lilia Sfaxi](https://insatunisia.github.io/TP-BigData/), elles-mêmes reposant sur le projet [github de Kai LIU](https://github.com/kiwenlau/Hadoop-cluster-docker).
 
-## Installation de *Docker*
+## Installation de *Docker* et des nœuds
 
-Pour installer *Docker*, merci de suivre les consignes disponibles ici [Docker](https://docs.docker.com/desktop/), en fonction de votre système d'exploitation. Cette étape installe un application appelée _Docker Desktop_, qui aura l'allure suivante, une fois les consignes ci-dessous exécutées:
+Pour installer *Docker*, merci de suivre les consignes disponibles ici [Docker](https://docs.docker.com/desktop/), en fonction de votre système d'exploitation. Cette étape installe un application appelée _Docker Desktop_, mais nous ne nous en serviront pas.
 
-<center class=correction><img src="figures/Docker_capture.png" style="width:50%"/></center>
+Nous allons utiliser tout au long de ce TP trois contenaires représentant respectivement un nœud maître (le _Namenode_) et deux nœuds esclaves (les _Datanodes_).
 
-## Installation d'un _Namenode_ et de deux _Datanode_
-
-Nous allons utiliser tout au long de ce TP trois contenaires représentant respectivement un nœud maître (_Namenode_) et deux nœuds esclaves (_Datanodes_).
-
-1. Depuis un _Terminal_, télécharger l'image docker depuis [_dockerhub_](https://hub.docker.com):
+1. Depuis un _Terminal_, téléchargez l'image docker depuis [_dockerhub_](https://hub.docker.com):
 ```shell
 docker pull liliasfaxi/spark-Hadoop:hv-2.7.2
 ```
-Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécessaires pour utiliser **Hadoop**.
+Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécessaires pour utiliser **Hadoop**. Ce container ne contient pas _Python_, mais nous verrons comment l'installer a posteriori.
 
 1. Créez les trois contenaires à partir de l'image téléchargée. Pour cela:
 
@@ -50,12 +46,31 @@ Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécess
      ```shell
      root@hadoop-master:~#
      ```
+     Nous allons en profiter pour installer _Python2.7_ (version requise pour la version d'**Hadoop** installée):
+     ```shell
+     apt-get update
+     apt-get install python2.7
+     ```
+     Cette installation de _Python_ doit aussi être réalisée sur les _Datanodes_. Enchaînez les commandes suivantes:
+     ```shell
+     exit
+     docker exec -it hadoop-slave1 bash
+     apt-get update
+     apt-get install python2.7
+     exit
+     docker exec -it hadoop-slave2 bash
+     apt-get update
+     apt-get install python2.7
+     exit
+     docker exec -it hadoop-master bash
+     ```
+     Nous sommes revenus dans le noud maître où nous allons lancer les _jobs_.
 
-Après cette dernière instruction, vous êtes entré dans un environnement, entièrement indépendant de votre machine. Il s'agit du ```shell``` (_Linux/Ubuntu_) du nœud maître. Effaçons dès-à-présent les fichiers qui ne nous seront pas nécessaires avec la commande ```rm```:
+Après cette dernière instruction, vous êtes entré dans un environnement, entièrement indépendant de votre machine. Il s'agit du ```shell``` (_Linux/Ubuntu_) du nœud maître. Effaçons dès-à-présent les fichiers qui ne seront pas utiles avec la commande ```rm```:
 ```shell
 rm purchases.txt purchases2.txt run-wordcount.sh
 ```
-Le résultat de la commande ```ls``` (liste les fichiers et dossiers du dossier en cours) ressemblera à ce qui suit:
+Le résultat de la commande ```ls``` (liste les fichiers et dossiers du dossier en cours) ressemblera à :
 ```shell
 hdfs start-hadoop.sh  start-kafka-zookeeper.sh
 ```

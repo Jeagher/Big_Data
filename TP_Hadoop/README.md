@@ -25,9 +25,9 @@ git --version
 S'il est absent, alors installez-le grâce à ce lien : [git-scm](https://git-scm.com/download/win). Lors de l'installation, validez les choix par défaut qui vous sont proposés.
 
 
-## TP 1ière partie - _Map-Reduce_ en local
+## TP 1ière partie - _wordcount_ en local
 
-Suivez alors les consignes concernant la première partie du TP, qui consistent a exécuter l'algorithme _map-reduce_ de comptage de mots, sur le fichier contenant un livre (_Dracula_) au format texte: [Map-Reduce_Local.md](./Map-Reduce_Local.md).
+Suivez alors les consignes concernant la première partie du TP, qui consistent a exécuter l'algorithme _map-reduce_ de comptage de mots, sur le fichier contenant un livre (_Dracula_) au format texte: [Wordcount_Local.md](./Wordcount_Local.md).
 
 ## Installer **Hadoop** via *Docker*
 
@@ -35,5 +35,7 @@ Pour installer **Hadoop** sur votre machine, suivez les consignes du fichier [In
 
 ## TP 2ième partie - _Map-Reduce_ avec Hadoop
 
-Ensuite, suivez l'énoncé du TP à proprement parlé disponible dans le fichier [Map-Reduce_Hadoop.md](./Map-Reduce_Hadoop.md).
+Ensuite, suivez les consignes permettant de lancer le comptage de mots en tant que _job map-reduce_ : [Wordcount_Hadoop.md](./Wordcount_Hadoop.md).
+
+Enfin, répondez aux exercices de cet énoncé : [Enonce_TP_Hadoop.md](./Enonce_TP_Hadoop.md).
 

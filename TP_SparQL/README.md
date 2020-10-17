@@ -9,7 +9,7 @@ Ce TP de 4h se décompose en deux temps:
     - [Non technical introduction to linked Open Data](https://www.youtube.com/watch?v=4x_xzT5eF5Q)
 
 
-  - Ensuite, une séance de travaux pratiques (durée: 2h30), qui consiste à répondre aux requêtes disponibles dans le lien ci-dessous. On  utilisera le client [Yasgui](https://yasgui.triply.cc) pour exécuter des requêtes sur [DBPedia](https://wiki.dbpedia.org/develop/datasets/latest-core-dataset-releases), la base de données RDF issus d’extraction de Wikipédia.    
+  - Ensuite, une séance de travaux pratiques (durée: 2h30), qui consiste à répondre aux requêtes disponibles dans le lien ci-dessous. On  utilisera le client [Yasgui](https://yasgui.triply.cc) pour exécuter des requêtes sur [DBPedia](https://wiki.dbpedia.org/develop/datasets/latest-core-dataset-releases), la base de données RDF issue d’extractions de Wikipédia.    
       - [lien vers l’énoncé du TP](http://liris.cnrs.fr/%7Epchampin/2016/ecl-sparql/)    
   
 	Pour bien débuter, voici la réponse à la première requête:

@@ -1,6 +1,6 @@
-*Sommaire*
+**Sommaire**
 
-[[TOC]]
+[[_TOC_]]
 
 # TP Hadoop
 

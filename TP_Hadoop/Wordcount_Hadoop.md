@@ -1,6 +1,6 @@
-*Sommaire*
+**Sommaire**
 
-[[TOC]]
+[[_TOC_]]
 
 # Map-reduce, avec Hadoop
 

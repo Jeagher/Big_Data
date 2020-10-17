@@ -1,6 +1,6 @@
-*Sommaire*
+**Sommaire**
 
-[[TOC]]
+[[_TOC_]]
 
 # Installation de **Hadoop** via _Docker_
 

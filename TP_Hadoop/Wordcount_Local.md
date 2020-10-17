@@ -2,9 +2,13 @@
 
 [[_TOC_]]
 
-## Map-reduce, en local
+# Wordcount, en local
 
 Nous allons ici faire fonctionner l'algorithme _map-reduce_ qui compte les mots d'un fichier texte, en local, _i.e._ sans exploiter le parallélisme massif du framework **Hadoop**. Le programme est constitué de deux scripts _Python_ qui sont appelés successivement selon la méthode décrite ci-dessous. Il s'agit ici surtout de comprendre la logique algorithmique.
+
+
+---
+## Récupération et lancement des scripts _Python_
 
 Pour récupérer le scripts, suivez les consignes:
 
@@ -27,7 +31,6 @@ Pour récupérer le scripts, suivez les consignes:
 
   La commande ```ls``` permet de lister le contenu du dossier. Vous pouvez observer la présence des 2 fichiers _mapper.py_ et _reducer.py_, ainsi que du livre _Dracula_ (libre de droit, téléchargé à partir de [cette adresse](http://www.textfiles.com/etext/FICTION/dracula)).
 
-
   - Lancez la commande suivante et observez le résultat:
   ```shell
   cat dracula | python mapper.py
@@ -38,13 +41,16 @@ Pour récupérer le scripts, suivez les consignes:
   cat dracula | python mapper.py | sort | python reducer.py 
   ```
 
+
+----
 ## Exercice 1 - Amélioration du *wordcount*
 
-En lançant 
+Pour stocker le résultat dans un fichier appelé _result.txt_, on lancera
 ```shell
 cat dracula | python mapper.py | sort | python reducer.py > results.txt
 ```
-vous stockez le résultat dans un fichier appelé _result.txt_. Ouvrez ce fichier avec votre éditeur de texte préféré, et regardez les premières lignes. On constate de nombreux problèmes:
+
+Ouvrez ce fichier avec votre éditeur de texte préféré, et regardez les premières lignes. On constate de nombreux problèmes:
 
   - les signes de ponctuation associés aux mots;
   - les mots commençant par une majuscule sont distingués des mots commençant par une minuscule. 

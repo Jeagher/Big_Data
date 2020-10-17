@@ -26,14 +26,14 @@ S'il est absent, alors installez-le grâce à ce lien : [git-scm](https://git-sc
 
 
 ---
-## TP 1ière partie - _wordcount_ en local
+## TP partie 1 - _wordcount_ _map-reduce_ en local
 
 Suivez  les consignes permettant d'exécuter l'algorithme _map-reduce_ de comptage de mots en local, sur le fichier contenant un livre (_Dracula_) au format texte : 
 > [Wordcount_Local.md](./Wordcount_Local.md)
 
 
 ---
-## TP 2ième partie - _Map-Reduce_ avec Hadoop
+## TP partie 2 - _map-reduce_ avec Hadoop
 
 Pour installer **Hadoop** sur votre machine (à l'aide de *Docker*), suivez les consignes du fichier : 
 > [Install_Docker_Hadoop.md](./Install_Docker_Hadoop.md)

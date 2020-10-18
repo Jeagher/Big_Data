@@ -24,13 +24,13 @@ docker pull liliasfaxi/spark-hadoop:hv-2.7.2
 ```
 Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécessaires pour utiliser **Hadoop**. Ce container ne contient pas _Python_, mais nous verrons comment l'installer _a posteriori_.
 
-1. Créez les trois contenaires à partir de l'image téléchargée. Pour cela:
+2. Créez les trois contenaires à partir de l'image téléchargée. Pour cela:
 
-     1. Créez un réseau qui permettra de relier les trois contenaires:
+     a. Créez un réseau qui permettra de relier les trois contenaires:
      ```shell
      docker network create --driver=bridge hadoop
      ```   
-     1. Créez et lancez les trois contenaires (les instructions `-p` permettent de faire un mapping entre les ports de la machine hôte et ceux du contenaire):
+     b. Créez et lancez les trois contenaires (les instructions `-p` permettent de faire un mapping entre les ports de la machine hôte et ceux du contenaire):
      ```shell
      docker run -itd --net=hadoop -p 50070:50070 -p 8088:8088 -p 7077:7077 -p 16010:16010 \
               --name hadoop-master --hostname hadoop-master \
@@ -62,7 +62,7 @@ Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécess
  apt-get install python2.7
  ```
 
-1. Cette installation de _Python_ doit aussi être réalisée sur les _Datanodes_. Quittez le contenaire `hadoop-master`
+2. Cette installation de _Python_ doit aussi être réalisée sur les _Datanodes_. Quittez le contenaire `hadoop-master`
  ```shell
  exit
  ```
@@ -87,7 +87,7 @@ Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécess
  exit
  ```
 
-1. Enfin, entrez à nouveau dans le container `hadoop-master` dans lequel nous allons lancer les _jobs_ :
+3. Enfin, entrez à nouveau dans le container `hadoop-master` dans lequel nous allons lancer les _jobs_ :
  ```shell
  docker exec -it hadoop-master bash
  ```  
@@ -101,7 +101,7 @@ Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécess
  ```
  Le fichier _purchases.txt_ nous sera utile dans la seconde partie du TP.
 
-**Remarque** Ces étapes de configuration ne doivent être réalisées qu'une seule fois. Pour relancer le cluster et entrer dans le _Namenode_, il suffira de lancer (une commande à la fois) :
+**Remarque** Ces étapes de configuration ne doivent être réalisées qu'une seule fois. Pour relancer le cluster et entrer dans le _Namenode_ (après avoir éteint votre ordinateur par exemple), il suffira de lancer les commandes suivantes (une à la fois) :
 ```shell
 docker start hadoop-master hadoop-slave1 hadoop-slave2
 docker exec -it hadoop-master bash

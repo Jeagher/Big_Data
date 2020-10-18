@@ -9,13 +9,16 @@ Les étapes pour installer **Hadoop** via _Docker_ sont largement adaptées de l
 ---
 ## Installation de *Docker* et des nœuds
 
-Pour installer *Docker*, merci de suivre les consignes disponibles [ici](https://docs.docker.com/desktop/), en fonction de votre système d'exploitation (lisez les _System requirements_ pour vérifier que votre machine est adaptée). Si votre machine est trop ancienne, ou avec peu d'espace disque ou mémoire RAM, il y a de bonnes chances que l'installation ne fonctionne pas. Si c'est le cas, travaillez avec votre voisin.
+Pour installer *Docker*, merci de suivre les consignes disponibles [ici](https://docs.docker.com/desktop/), en fonction de votre système d'exploitation (lisez les _System requirements_ pour vérifier que votre machine est adaptée). Si votre machine est trop ancienne, ou avec peu d'espace disque ou mémoire RAM, il y a de bonnes chances que l'installation ne fonctionne pas. Si c'est le cas, 
+
+ - soit vous pouvez travailler avec votre voisin,    
+ - soit vous pouvez aller directement à la seconde partie du TP, et réaliser les exercices en local (sans Hadoop).
 
 _Remarque_ : Cette étape installe un application appelée _Docker Desktop_, mais nous ne nous en servirons pas.
 
 Nous allons utiliser tout au long de ce TP trois contenaires représentant respectivement un nœud maître (le _Namenode_) et deux nœuds esclaves (les _Datanodes_).
 
-1. Depuis un _Terminal_, téléchargez l'image docker depuis [_dockerhub_](https://hub.docker.com) (Volume du téléchargement : 1.94 GB!) :
+1. Depuis un _Terminal_, téléchargez l'image docker depuis [_dockerhub_](https://hub.docker.com) (volume à télécharger : 1.94 GB!) :
 ```shell
 docker pull liliasfaxi/spark-hadoop:hv-2.7.2
 ```
@@ -90,9 +93,16 @@ Ce container contient une distribution _Linux/Ubuntu_, et les librairies nécess
  ```  
  Effacez les fichiers inutiles pour la suite avec la commande ```rm```:
  ```shell
- rm purchases.txt purchases2.txt run-wordcount.sh start-kafka-zookeeper.sh
+ rm purchases2.txt run-wordcount.sh start-kafka-zookeeper.sh
  ```
  La commande ```ls``` (liste les fichiers et dossiers du dossier en cours) fait état des fichiers suivants :
  ```shell
- hdfs start-hadoop.sh
+ hdfs start-hadoop.sh purchases.txt
  ```
+ Le fichier _purchases.txt_ nous sera utile dans la seconde partie du TP.
+
+**Remarque** Ces étapes de configuration ne doivent être réalisées qu'une seule fois. Pour relancer le cluster et entrer dans le _Namenode_, il suffira de lancer (une commande à la fois) :
+```shell
+docker start hadoop-master hadoop-slave1 hadoop-slave2
+docker exec -it hadoop-master bash
+```

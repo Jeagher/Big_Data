@@ -12,7 +12,7 @@ Vous devez aussi savoir naviguer dans vos dossiers à l'aide de la commande ```c
 cd c:\Users\stephane\TP_Hadoop # Windows
 cd ~\stephane\TP_Hadoop        # Mac, linux
 ```
-Si vous souhaitez remonter d'un niveau dans la hiérarchie des dossiers: ```cd ..```.
+Si vous souhaitez remonter d'un niveau dans la hiérarchie des dossiers: ```cd ..```. Des tutos vidéo existent pour décoruvrir les comandes de bases (identiques à celles que l'on retourve sur les systèmes _Linux_).
 
 
 ---

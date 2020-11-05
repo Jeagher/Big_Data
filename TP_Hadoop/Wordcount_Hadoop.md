@@ -4,7 +4,7 @@
 
 # Map-reduce, avec Hadoop
 
-Étant donné l'installation précédente, nous allons exploiter le parallélisme de votre processeur (souvent constitué de 4 cœurs, et donc susceptible de lancer 4 instructions en parallèle). Parmi ces 4 cœurs, nous n'en exploiterons que 3 (1 pour le _Namenode_ et 2 pour les _Datanodes_), le dernier cœur étant à disposition de votre machine pour toutes les autres tâches.
+Étant donnée l'installation précédente, nous allons exploiter le parallélisme de votre processeur, souvent constitué de 4 cœurs, et donc susceptible de lancer 4 instructions en parallèle. Parmi ces 4 cœurs, nous n'en exploiterons que 3 (1 pour le _Namenode_ et 2 pour les _Datanodes_), le dernier cœur étant à disposition de votre machine pour toutes les autres tâches qu'elle doit réaliser.
 
 
 ---
@@ -38,8 +38,8 @@ hadoop-slave2: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-root
 ---
 ## Préparation des fichiers pour _wordcount_
 
-> **Remarque importante** Le _Terminal_ pointe sur un système _Linux_ qui a son propre mode de stockage de fichier (appelé _ext3_). Il est alors possible de créer des dossiers, déposer des fichiers, les effacer... avec les commandes _Linux_ traditionnelles (```mkdir```, ```rm```...). Notons qu'il n'existe pas d'éditeur de texte intégré (pour écrire les scripts _Python_), donc nous aurons recours à une astuce décrite ci-dessous. 
-> C'est sur cet espace que nous stockerons les scripts _Python map-reduce_ qui seront exécutés par **Hadoop**. Par contre, les fichiers volumineux, ceux pour lesquels nous déploierons des algorithmes de traitement, seront stockés sur une partie de votre disque dur gérée par _HDFS_ (_Hadoop Distributed File System_). À l'aide de commandes commençant par _"`hadoop fs -` + commande"_, il sera possible de créer des dossiers sur _HDFS_, copier des fichiers depuis _Linux_ vers _HDFS_, et rapatrier des fichiers depuis _HDFS_ vers Linux.  
+> **Remarque importante** Le _Terminal_ pointe sur un système _Linux_ qui a son propre mode de stockage de fichier (appelé _ext3_). Il est alors possible de créer des dossiers, de déposer des fichiers, de les effacer... avec les commandes _Linux_ traditionnelles (```mkdir```, ```rm```...). Notons qu'il n'existe pas d'éditeur de texte intégré au container que nous venons d'installer (pour écrire les scripts _Python_), donc nous aurons recours à une astuce décrite ci-dessous.    
+> C'est sur cet espace que nous stockerons les scripts _Python map-reduce_ qui seront exécutés par **Hadoop**. Par contre, les fichiers volumineux, ceux pour lesquels nous déploierons des algorithmes de traitement, seront stockés sur une partie de votre disque dur gérée par _HDFS_ (_Hadoop Distributed File System_). À l'aide de commandes commençant par _"`hadoop fs -` + commande"_, il est possible de créer des dossiers sur _HDFS_, de copier des fichiers depuis _Linux_ vers _HDFS_, et de rapatrier des fichiers depuis _HDFS_ vers Linux.  
 
 Laissez-vous guider...
 
@@ -78,12 +78,25 @@ docker cp reducer.py hadoop-master:/root/wordcount
 ``` 
 Retenez la syntaxe, car elle vous sera utile plus tard, pour rapatrier les nouveaux scripts _Python_ que vous aurez développés.
 
-Revenez alors vers le **premier _Terminal_** (ne fermez pas le second, il sera utile plus tard), et vérifiez avec la commande ```ls``` que les 2 fichiers sont bien présents. Il faut maintenant rendre ces 2 scripts exécutables:
-```shell
-chmod +x mapper.py
-chmod +x reducer.py
-``` 
-Souvenez-vous de cette manip., car il faudra aussi la faire sur vos nouveaux scripts.
+Revenez alors vers le **premier _Terminal_** (ne fermez pas le second, il sera utile plus tard), et vérifiez avec la commande ```ls``` que les 2 fichiers sont bien présents. Il faut maintenant 
+
+  - rendre ces 2 scripts exécutables:
+  ```shell
+  chmod +x mapper.py
+  chmod +x reducer.py
+  ```
+
+  - Pour les utilisateurs de _Windows_ uniquement : il faut aussi convertir les caractères de saut de lignes, qui sont différents entre _Windows_ et _Linux_. Pour cela, téléchargez et installez le programme ```dos2unix``` 
+  ```shell
+  apt-get install dos2unix
+  ```
+  Puis, pour chaque fichier texte (_p. ex._, _fichier.py_) que vous rapatrierez depuis votre machine sur le compte _Linux_, il conviendra de lancer:
+  ```shell
+  dos2unix fichier.py
+  ```
+  Il faudra appliquer ce protocole aux fichiers _mapper.py_ et _reducer.py_ notamment.
+
+Souvenez-vous de cette manip., car il faudra aussi la mettre en place sur vos nouveaux scripts.
 
 Ça y est, nous sommes prêts à lancer notre premier script _map-reduce_ sous **Hadoop**!
 
@@ -99,15 +112,9 @@ Souvenez-vous de cette manip., car il faudra aussi la faire sur vos nouveaux scr
   export STREAMINGJAR='/usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.2.jar'
   ```    
   Je vous rappelle que _**Hadoop** map-reduce_ fonctionne avec le langage **Java** ; il faut donc utiliser une bibliothèque capable de transformer des instructions _Python_ en instruction **Java**. C'est le rôle de cette bibliothèque _hadoop-streaming-2.7.2.jar_ (on appelle cela un _wrapper_).    
-  - Ensuite, lancez le _job_ **Hadoop** avec l'instruction suivante (copiez tout le bloc d'instrcution et collez-le dans le _Terminal_):
+  - Ensuite, lancez le _job_ **Hadoop** avec l'instruction suivante (copiez tout le bloc d’instructions et collez-le dans le _Terminal_):
   ```shell
-  hadoop jar $STREAMINGJAR \
-     -input input/dracula \
-     -output sortie \
-     -mapper mapper.py \
-     -reducer reducer.py \
-     -file mapper.py \
-     -file reducer.py
+  hadoop jar $STREAMINGJAR -input input/dracula -output sortie -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
   ``` 
   Les options ```-file``` permettent de copier les fichiers nécessaires pour qu'ils soit exécutés sur tous les nœuds du cluster. Le résultat du comptage de mots est stocké dans le dossier _sortie_ sous _HDFS_. Vous pouvez voir son contenu en lançant la commande:
   ```shell
@@ -136,14 +143,7 @@ Souvenez-vous de cette manip., car il faudra aussi la faire sur vos nouveaux scr
 
   La présence d'un seul fichier ```part-0000x```  montre qu'un seul nœud a été utilisé pour le _reducer_ (le nombre de nœuds est estimé par le _Namenode_). Il est possible de forcer le nombre de _reducer_ :
   ```shell
-  hadoop jar $STREAMINGJAR \
-     -D mapred.reduce.tasks=2 \
-     -input input/dracula \
-     -output sortie \
-     -mapper mapper.py \
-     -reducer reducer.py \
-     -file mapper.py \
-     -file reducer.py
+  hadoop jar $STREAMINGJAR -D mapred.reduce.tasks=2 -input input/dracula -output sortie -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
   ```
   La commande :
   ```shell
@@ -160,12 +160,12 @@ Souvenez-vous de cette manip., car il faudra aussi la faire sur vos nouveaux scr
 ---
 ## Monitoring du cluster et des _jobs_
 
-**Hadoop** offre plusieurs interfaces web pour pouvoir observer le comportement de ses différentes composantes. Vous pouvez afficher ces pages en local sur votre machine grâce à l'option -p de la commande `docker run`. 
+**Hadoop** offre plusieurs interfaces web pour pouvoir observer le comportement de ses différentes composantes. Vous pouvez afficher ces pages en local sur votre machine grâce à l'option _-p_ de la commande `docker run`. 
  
- - Le **port 50070** permet d'afficher les informations de votre _Namenode_.    
+ - Le **port 50070** permet d'afficher les informations de votre _Namenode_.      
  - Le **port 8088** permet d'afficher les informations du _resource manager_ (apeplé _Yarn_) et visualiser le comportement des différents jobs.
 
-Une fois votre cluster lancé et prêt à l'emploi, utilisez votre navigateur préféré pour oberver la page _http://localhost:50070_, dont le résultat sera semblable à:
+Une fois votre cluster lancé et prêt à l'emploi, utilisez votre navigateur préféré pour observer la page _http://localhost:50070_. _Attention_ : lors de l'installation, certains étudiants auront du supprimer le _mapping_ de ce port, ils ne leur sera donc pas possible de visualiser la page, semblable à:
 
 <center><img src="figures/interface50070.png" style="width:75%"/></center>
 

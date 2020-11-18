@@ -64,6 +64,11 @@ dans le _shell_ du _Namenode_, pensez à rendre vos scripts exécutables :
 chmod +x vente_map.py
 chmod +x vente_reduce.py
 ```
+Vérifiez, avec la commande `more vente_map.py`, que la première ligne du fichier est bien la suivante :
+```shell
+#!/usr/bin/env python2.7
+```   
+Si non, alors corrigez le fichier en conséquence!    
 Et si vous utilisez _Windows_, pensez également à convertir les fins de ligne de ces 2 fichiers avec `dos2unix`.
 
 Vous êtes maintenant équipés pour développer les scripts _map-reduce_ permettant de répondre aux questions suivantes.

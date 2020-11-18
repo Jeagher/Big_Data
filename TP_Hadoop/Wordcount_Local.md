@@ -35,22 +35,26 @@ La commande ```ls``` permet de lister le contenu du dossier. Vous pouvez observe
 
   - Lancez la commande suivante et observez le résultat:
   ```shell
-  cat dracula | python mapper.py
+  more dracula | python mapper.py
   ```
 
   - Lancez ensuite la commande entière et observez le résultat:
   ```shell
-  cat dracula | python mapper.py | sort | python reducer.py 
+  more dracula | python mapper.py | sort | python reducer.py 
   ```
 
-
+**Remarque importante** La première ligne de tous vos scripts _Python_ devra être
+```shell
+#!/usr/bin/env python2.7
+```
+Cette ligne indique que si le script doit être éxécuté, alors c'est avec _python2.7_ qu'il doit l'être.
 
 ----
 ## Exercice 1 - Amélioration du *wordcount*
 
 *Remarque* : Pour stocker le résultat dans un fichier appelé _result.txt_, on lancera
 ```shell
-cat dracula | python mapper.py | sort | python reducer.py > results.txt
+more dracula | python mapper.py | sort | python reducer.py > results.txt
 ```
 
 Ouvrez ce fichier avec votre éditeur de texte préféré, et regardez les premières lignes. On constate de nombreux problèmes :

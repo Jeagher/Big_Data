@@ -84,7 +84,12 @@ Revenez alors vers le **premier _Terminal_** (ne fermez pas le second, il sera u
   ```shell
   chmod +x mapper.py
   chmod +x reducer.py
-  ```
+  ```   
+  Vérifiez, avec la commande `more mapper.py`, que la première ligne du fichier est bien la suivante :
+  ```shell
+  #!/usr/bin/env python2.7
+  ```   
+  Si non, alors corrigez le fichier en conséquence!
 
   - Pour les utilisateurs de _Windows_ uniquement : il faut aussi convertir les caractères de saut de lignes, qui sont différents entre _Windows_ et _Linux_. Pour cela, téléchargez et installez le programme ```dos2unix``` 
   ```shell
@@ -173,4 +178,4 @@ Prenez le temps de naviguer dans les menus et d’observer les informations indi
 
 Vous pouvez également visualiser l'avancement et les résultats de vos _jobs_ (_map-reduce_ ou autre) en allant à l'adresse _http://localhost:8088_. Prenez le temps là-aussi de naviguer dans les menus et d’observer les informations indiquées.
 
-_Dernier point_ : Il est également possible de voir le comportement des nœuds _Datanodes_, en allant à l'adresse: _http://localhost:8041_ pour _slave1_, et _http://localhost:8042_ pour _slave2_.
+_Dernier point_ : Il est également possible de voir le comportement des nœuds _Datanodes_, en allant à l'adresse: _http://localhost:8040_ pour _slave1_, et _http://localhost:8041_ pour _slave2_.

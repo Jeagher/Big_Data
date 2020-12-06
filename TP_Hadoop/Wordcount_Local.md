@@ -47,7 +47,7 @@ La commande ```ls``` permet de lister le contenu du dossier. Vous pouvez observe
 ```shell
 #!/usr/bin/env python2.7
 ```
-Cette ligne indique que si le script doit être éxécuté, alors c'est avec _python2.7_ qu'il doit l'être.
+Cette ligne indique que si le script doit être exécuté, alors c'est avec _python2.7_ qu'il doit l'être.
 
 ----
 ## Exercice 1 - Amélioration du *wordcount*

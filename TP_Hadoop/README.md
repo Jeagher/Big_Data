@@ -6,13 +6,12 @@
 
 Ce TP de 4h fait suite au cours sur le _framework_ libre et open source appelé [__Hadoop__](https://Hadoop.apache.org), développé et maintenu par la [Fondation Apache](https://www.apache.org).
 
-> *Remarque* : Pour ce TP, vous devez savoir ouvrir un _Terminal_ sur votre machine, quelque soit le système d'exploitation (_Windows_, _Linux_, ou _Mac OS X_). Sous _Windows 10_, vous pourrez utiliser le programme _Windows powershell_ qui est très similaires au _Terminal_ de _Linux_ et de _Mac OS X_. 
-Vous devez aussi savoir naviguer dans vos dossiers à l'aide de la commande ```cd```. Typiquement :
+> *Remarque* : Pour ce TP, vous devez savoir ouvrir un _Terminal_ sur votre machine, quelque soit le système d'exploitation (_Windows_, _Linux_, ou _Mac OS X_). Sous _Windows 10_, vous pourrez utiliser le programme _Windows powershell_ qui est très similaires au _Terminal_ de _Linux_ et de _Mac OS X_. Vous devez aussi savoir naviguer dans vos dossiers à l'aide de la commande ```cd```. Typiquement :
 ```shell
 cd c:\Users\stephane\TP_Hadoop # Windows
 cd ~\TP_Hadoop                 # Mac, linux
 ```
-Si vous souhaitez remonter d'un niveau dans la hiérarchie des dossiers: ```cd ..```. Des tutos vidéo existent pour décoruvrir les comandes de bases (identiques à celles que l'on retourve sur les systèmes _Linux_).
+Si vous souhaitez remonter d'un niveau dans la hiérarchie des dossiers: ```cd ..```. Des tutos vidéo existent pour décoruvrir les comandes de bases (identiques à celles que l'on retrouve sur les systèmes _Linux_).
 
 
 ---

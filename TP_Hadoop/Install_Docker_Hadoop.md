@@ -17,7 +17,7 @@ Pour installer *Docker*, merci de suivre les [consignes disponibles ici](https:/
 
 Nous allons utiliser tout au long de ce TP trois contenaires représentant respectivement un nœud maître (le _Namenode_) et deux nœuds esclaves (les _Datanodes_).
 
-1. Depuis un _Terminal_, téléchargez l'image docker depuis [_dockerhub_](https://hub.docker.com) (volume à télécharger : 1.94 GB!) :
+1. Depuis un _Terminal_, téléchargez l'image docker depuis [_dockerhub_](https://hub.docker.com) (volume à télécharger : 1.76 GB!) :
 ```shell
 docker pull liliasfaxi/spark-hadoop:hv-2.7.2
 ```

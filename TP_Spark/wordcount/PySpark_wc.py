@@ -14,7 +14,7 @@ if __name__ == "__main__":
 	wordCounts = tokenized.map(lambda word: (word, 1)).reduceByKey(lambda v1,v2 : v1 + v2)
 
 	# Stockage du resultat sur HDFS 
-	# ne pas oublier "hdfs dfs -rm -r -f sortie" entre 2 executions!
+	# ne pas oublier "hadoop fs -rm -r -f sortie" entre 2 executions!
 	wordCounts.saveAsTextFile("sortie")
 	
 	# Arret du contexte Spark

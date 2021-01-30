@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
 	lines = sc.textFile("README.md")
 	lineLengths = lines.map(lambda s: len(s))
-	# lineLengths.persist()
+
 	totalLength = lineLengths.reduce(lambda a, b: a + b)
 	print(totalLength)
 

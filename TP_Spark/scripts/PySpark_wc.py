@@ -4,7 +4,7 @@ from pyspark import SparkContext
 if __name__ == "__main__":
 
 	if len(sys.argv) != 2:
-		print("Usage: wordcount <file>", file=sys.stderr)
+		print("Usage: PySpark_wc <file>", file=sys.stderr)
 		sys.exit(-1)
 
 	# Creation d'un contexte spark

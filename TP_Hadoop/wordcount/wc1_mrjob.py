@@ -1,21 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
 #-*- coding: utf-8 -*-
-
 from mrjob.job import MRJob
-import re
 
-WORD_RE = re.compile(r"[\w']+")
-
-
-class MRWordFreqCount(MRJob):
-
+class MRWordCount(MRJob):
     def mapper(self, _, line):
-        for word in WORD_RE.findall(line):
-            yield (word.lower(), 1)
-
+        for word in line.split():
+                yield(word, 1)
     def reducer(self, word, counts):
-        yield (word, sum(counts))
-
+        yield(word, sum(counts))
 
 if __name__ == '__main__':
-    MRWordFreqCount.run()
+    MRWordCount.run()

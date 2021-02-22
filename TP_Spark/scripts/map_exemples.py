@@ -5,7 +5,6 @@
 print('MAP - Exemple 1')
 
 squares = map(lambda x: x * x, [0, 1, 2, 3, 4])
-
 print(list(squares))
 
 
@@ -21,7 +20,6 @@ secret_names = map(lambda x: random.choice(code_names), names)
 print(list(secret_names))
 
 
-
 ################ MAP - Exemple 3
 print('MAP - Exemple 3')
 def multiply(x):
@@ -33,7 +31,6 @@ funcs = [multiply, add]
 for i in range(5):
     value = list(map(lambda x: x(i), funcs))
     print(value)
-
 
 
 ################ MAP - Exemple 4

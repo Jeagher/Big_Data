@@ -6,7 +6,7 @@ from pyspark import SparkContext
 if __name__ == "__main__":
 
 	# Creation d un contexte Spark
-	sc=SparkContext(appName="Text line count")
+	sc=SparkContext(appName="Character count")
 	sc.setLogLevel("ERROR") # Valid log levels include: ALL, DEBUG, ERROR, FATAL, INFO, OFF, TRACE, WARN
 
 	lines = sc.textFile("README.md")

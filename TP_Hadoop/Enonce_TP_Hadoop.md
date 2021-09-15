@@ -48,7 +48,8 @@ hadoop fs -put purchases_extrait100.txt input
 **Remarque** : Il n'est pas possible de programmer directement dans le _shell_ du _Namenode_, car celui-ci ne dispose pas d'éditeur de texte. La solution consiste à 
 
  1. programmez vos scripts _map_ et _reduce_ avec votre IDE préférée (et pourquoi pas _Spyder_);    
- 1. stockez vos fichiers (appelés _vente\_map.py_ et _vente\_reduce.py_) dans un dossier _vente_ que vous aurez créé sur votre machine (à côté du répertoire _wordcount_ de la première partie du TP?);    
+ 1. stockez vos fichiers (appelés _vente\_map.py_ et _vente\_reduce.py_) dans un dossier _vente_ que vous aurez créé sur votre machine (à côté du répertoire _wordcount_ de la première partie du TP ?);    
+ 1. stockez vos fichiers (appelés _vente\_map.py_ et _vente\_reduce.py_) dans un dossier _vente_ que vous aurez créé sur votre machine (à côté du répertoire _wordcount_ de la première partie du TP ?);    
  1. envoyez vos 2 fichiers vers le _Namenode_ :
  ```shell
  docker cp vente_map.py hadoop-master:/root/ventes
@@ -66,7 +67,7 @@ chmod +x vente_reduce.py
 ```
 Vérifiez, avec la commande `more vente_map.py`, que la première ligne du fichier est bien la suivante :
 ```shell
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 ```   
 Si non, alors corrigez le fichier en conséquence!    
 Et si vous utilisez _Windows_, pensez également à convertir les fins de ligne de ces 2 fichiers avec `dos2unix`.

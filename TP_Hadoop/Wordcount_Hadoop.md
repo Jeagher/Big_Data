@@ -87,7 +87,7 @@ Revenez alors vers le **premier _Terminal_** (ne fermez pas le second, il sera u
   ```   
   Vérifiez, avec la commande `more mapper.py`, que la première ligne du fichier est bien la suivante :
   ```shell
-  #!/usr/bin/env python2.7
+  #!/usr/bin/env python3
   ```   
   Si non, alors corrigez le fichier en conséquence!
 

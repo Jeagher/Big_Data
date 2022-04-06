@@ -4,7 +4,7 @@
 from mrjob.job import MRJob
 
 class MRWordCount(MRJob):
-    def mapper(self, _, line):
+    def mapper(self, key, line):
         for word in line.split():
                 yield(word, 1)
     def reducer(self, word, counts):

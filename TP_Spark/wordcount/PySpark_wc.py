@@ -2,9 +2,10 @@
 import sys
 
 from pyspark import SparkContext
+import pyspark
 
 if __name__ == "__main__":
-
+	print(pyspark.__version__)
 	# Creation d'un contexte spark
 	sc = SparkContext(appName="Spark Count")
 

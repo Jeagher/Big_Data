@@ -1,0 +1,6 @@
+"a"	[14,"abracadabrants"]
+"e"	[16,"reensemencements"]
+"i"	[11,"distinctifs"]
+"o"	[13,"chloroformons"]
+"u"	[9,"turlututu"]
+"y"	[5,"thyms"]

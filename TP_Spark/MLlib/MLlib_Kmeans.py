@@ -11,14 +11,15 @@ def error(point):
 if __name__ == "__main__":
 
 	sc=SparkContext(appName="Parallelize")
+	sc.setLogLevel("ERROR")
 
 	# Lire et "distribuer" les donnees
-	data = sc.textFile("file:///root/pyspark/MLlib/kmeans_data.txt")
+	data = sc.textFile("hdfs:///user/root/input/kmeans_data.txt")
 	parsedData = data.map(lambda line: array([float(x) for x in line.split(' ')]))
 	parsedData.collect()
 
 	# Recherche des 2 classes
-	clusters = KMeans.train(parsedData, 2, maxIterations=10, runs=10, initializationMode="random")
+	clusters = KMeans.train(parsedData, 2, maxIterations=10, initializationMode="random")
 	Inert    = parsedData.map(lambda point: error(point)).reduce(lambda x, y: x + y)
 	varIntra = Inert/parsedData.count()
 	print("Variance intraclasse = " + str(varIntra))

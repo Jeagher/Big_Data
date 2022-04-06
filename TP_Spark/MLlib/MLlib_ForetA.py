@@ -20,7 +20,7 @@ if __name__ == "__main__":
 	model.totalNumNodes()
 
 	# "Affichage" de la foret
-	print model.toDebugString()
+	print(model.toDebugString())
 	# Preevision d un eechantillon
 	rdd = sc.parallelize([[3.0], [1.0]]) 
 	model.predict(rdd).collect()
